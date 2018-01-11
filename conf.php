@@ -4,6 +4,6 @@
 	$pass="";
 	$root="root";
 	$local="localhost";
-
+	echo "asudighbasugfdyuasgfyuagsfuiygaui";
 
  ?>
