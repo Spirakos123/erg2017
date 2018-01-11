@@ -1,16 +1,13 @@
 <?php
-
 include "conf.php";
+require "./nav_admin.html";
+
 $firstname = $_POST['fname'];
 $lastname =$_POST['lname'];
 $email = $_POST['email'];
-$user_name =$_POST['username'];
+$username =$_POST['username'];
 $password =$_POST['pwd'];
-echo $firstname;
-echo $lastname;
-echo $email;
-echo $user_name;
-echo $password;
+
 
 
 
@@ -19,14 +16,14 @@ echo $password;
   die('Could not connect: ' . mysql_error());
   }
  mysqli_set_charset($con, "utf8");
-  // $sql= "INSERT INTO users (firstname, lastname, email,username,password)
-  // VALUES ('NULL', $firstname, $lastname,$email,$user_name,$password)";
 
-$sql= "INSERT INTO users(`firstname`, `lastname`, `email`, `username`, `password`) VALUES ($firstname, $lastname,$email,$user_name,$password)";
 
-  $Result=mysqli_query($con,$sql);
-
-  echo "<br>".$sql;
+$sql= "INSERT INTO users (firstname, lastname, email, username, password) VALUES ('$firstname', '$lastname','$email','$username','$password')";
+if (mysqli_query($con, $sql)) {
+  echo "New record created successfully";
+}else{
+  echo "Error: " . $sql . "<br>" . mysqli_error($con);
+}
   mysqli_close($con);
 
   ?>

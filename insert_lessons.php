@@ -1,5 +1,7 @@
 <?php
 include "conf.php";
+ require "./nav_admin.html";
+
 $title = $_POST['title'];
 // $kenou =$_POST['kenou'];
 // $checkbox = $_POST['checkbox'];
