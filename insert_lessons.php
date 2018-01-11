@@ -7,7 +7,7 @@ $title = $_POST['title'];
 echo "eeeee";
 echo $title;
 
-require "nav_admin.html";
+//require "nav_admin.html";
  $con = mysqli_connect($local,$root,$pass,$idm);
   if (!$con) {
   die('Could not connect: ' . mysql_error());
@@ -16,7 +16,7 @@ require "nav_admin.html";
   // $sql= "INSERT INTO users (firstname, lastname, email,username,password)
   // VALUES ('NULL', $firstname, $lastname,$email,$user_name,$password)";
 
-$sql="INSERT INTO lessons ('title')VALUES($title)";
+$sql="INSERT INTO lessons ('title')VALUES( '$title' )";
   if (mysqli_query($con, $sql)) {
     echo "New record created successfully";
   }else{
