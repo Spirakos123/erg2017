@@ -4,8 +4,8 @@ $title = $_POST['title'];
 // $kenou =$_POST['kenou'];
 // $checkbox = $_POST['checkbox'];
 // $pollaplis =$_POST['pollaplis'];
-
-
+echo "eeeee";
+echo $title;
 
 require "nav_admin.html";
  $con = mysqli_connect($local,$root,$pass,$idm);
