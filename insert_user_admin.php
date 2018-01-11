@@ -22,7 +22,7 @@ echo $password;
   // $sql= "INSERT INTO users (firstname, lastname, email,username,password)
   // VALUES ('NULL', $firstname, $lastname,$email,$user_name,$password)";
 
-$sql= "INSERT INTO users('firstname', 'lastname', 'email', 'username', 'password') VALUES ($firstname, $lastname,$email,$user_name,$password)";
+$sql= "INSERT INTO users(`firstname`, `lastname`, `email`, `username`, `password`) VALUES ($firstname, $lastname,$email,$user_name,$password)";
 
   $Result=mysqli_query($con,$sql);
 
