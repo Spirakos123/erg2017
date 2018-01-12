@@ -12,9 +12,6 @@ $password =$_POST['pwd'];
 
 
  $con = mysqli_connect($local,$root,$pass,$idm);
-  if (!$con) {
-  die('Could not connect: ' . mysql_error());
-  }
  mysqli_set_charset($con, "utf8");
 
 
