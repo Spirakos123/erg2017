@@ -10,7 +10,7 @@
     </head>
     <body>
         <?php
-        include '../test/admin_nav_bar.php';
+        //require '../test/admin_nav_bar.php';
         ?>
 
         <div class="container-fluid">

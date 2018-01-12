@@ -1,6 +1,5 @@
 <?php
-include "conf.php";
-require "./nav_admin.html";
+require "conf.php";
 
 $title = $_POST['title'];
 // $kenou =$_POST['kenou'];

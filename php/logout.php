@@ -3,5 +3,5 @@
 
   session_destroy();
 
-  header('Location: ./home.html');
+  header('Location: ../html/home.php');
 ?>

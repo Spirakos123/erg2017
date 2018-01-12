@@ -1,6 +1,6 @@
 <?php
 
-include "conf.php";
+require "conf.php";
 $firstname = $_POST['fname'];
 $lastname =$_POST['lname'];
 $email = $_POST['email'];

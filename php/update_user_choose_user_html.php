@@ -1,11 +1,12 @@
-<?php session_start(); ?>
 <html>
     <head>
-<?php include "conf.php";
-require "./nav_admin.html";?>
+
     </head>
     <body>
-
+      <?php
+      require "conf.php";
+      require "../html/navbar.php";
+      ?>
        <div class="container-fluid">
                  <div  class="col-xs-9 col-sm-9">
                     <h3>Επιλογή χρήστη για ενημέρωση</h3>

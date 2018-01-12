@@ -1,9 +1,12 @@
 <html>
     <head>
-      <?php include "conf.php";
-      require "./nav_admin.html";?>
+
     </head>
     <body>
+      <?php
+      require "conf.php";
+      require "../html/navbar.php";
+      ?>
         <div class="container-fluid">
             <?php
               $user_id = $_POST["user_id"];

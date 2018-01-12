@@ -7,18 +7,20 @@ $password =$_POST['pwd'];
 
 if(($user_name=='vasso')&&($password=='555')){
   $_SESSION['username'] = $user_name;
+  $_SESSION['role'] = "admin";
   session_write_close();
 
 
-  header('Location: ./admin.php');
+  header('Location: ../html/admin.php');
 
 }else if((isset($_SESSION['username']))) {
-  require "nav_user.html";
+  //require "../html/nav_user.html";
+  header('Location: ../html/navbar.html');
   //elegxos gia ta stoixeia prwta
   echo "<h2>Hello</h2>". $user_name;
 }
 else  {
-  require "register.html";
+  header('Location: ../html/register.html');
 }
 
 

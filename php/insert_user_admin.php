@@ -1,6 +1,5 @@
 <?php
-include "conf.php";
-require "./nav_admin.html";
+require "conf.php";
 
 $firstname = $_POST['fname'];
 $lastname =$_POST['lname'];

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php require "./nav_admin.html"; ?>
+
 </head>
 <body>
-
+  <?php require "../html/navbar.php"; ?>
 <div class="container">
   <h2>Register form</h2>
   <form class="form-horizontal" action="insert_user_admin.php" method='post'>

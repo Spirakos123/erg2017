@@ -2,17 +2,19 @@
 <html>
     <head>
       <title></title>
-      <?php include "conf.php";
-      require "./nav_admin.html";?>
+      <?php 
+      	require "conf.php";
+	    require "./nav_admin.html";
+      ?>
     </head>
     <body>
        <div class="container-fluid">
         <div class="col-xs-9 col-sm-9">
-             <h3>Επιλογή χρήστη για διαγραφή</h3>
+             <h3>Ξ•Ο€ΞΉΞ»ΞΏΞ³Ξ® Ο‡Ο�Ξ®ΟƒΟ„Ξ· Ξ³ΞΉΞ± Ξ΄ΞΉΞ±Ξ³Ο�Ξ±Ο†Ξ®</h3>
                 <?php
                   $con = mysqli_connect($local,$root,$pass,$idm);
                   if (!$con) {
-                      die("Αποτυχία ύνδεσης: " . mysqli_connect_error());
+                      die("Ξ‘Ο€ΞΏΟ„Ο…Ο‡Ξ―Ξ± Ο�Ξ½Ξ΄ΞµΟƒΞ·Ο‚: " . mysqli_connect_error());
                   }
                   mysqli_set_charset($con, "utf8");
                   $sql = "SELECT * FROM `users`";
@@ -28,13 +30,13 @@
                           echo " First name:" . $row["firstname"];
                           echo " Last name:" . $row["lastname"] . "<br>";
                       }
-                     echo "<br>" . " <button class='btn btn-default' type='reset'>Καθαρισμός</button>";
-                              echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";
+                     echo "<br>" . " <button class='btn btn-default' type='reset'>Ξ�Ξ±ΞΈΞ±Ο�ΞΉΟƒΞΌΟ�Ο‚</button>";
+                              echo "<button class='btn btn-default' type='submit'>Ξ¥Ο€ΞΏΞ²ΞΏΞ»Ξ®</button>";
 
 
                       echo "</form>";
                   } else {
-                      echo "Δεν βρέθηκαν αποτελέσματα";
+                      echo "Ξ”ΞµΞ½ Ξ²Ο�Ξ­ΞΈΞ·ΞΊΞ±Ξ½ Ξ±Ο€ΞΏΟ„ΞµΞ»Ξ­ΟƒΞΌΞ±Ο„Ξ±";
                   }
 
                   mysqli_close($con);
