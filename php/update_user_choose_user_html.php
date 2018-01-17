@@ -11,9 +11,7 @@
                  <div  class="col-xs-9 col-sm-9">
                     <h3>Επιλογή χρήστη για ενημέρωση</h3>
                     <?php
-
                      $con = mysqli_connect($local,$root,$pass,$idm);
-            // Check connection
                     if (!$con) {
                         die("Αποτυχία ύνδεσης: " . mysqli_connect_error());
                     }

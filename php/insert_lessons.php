@@ -1,6 +1,6 @@
 <?php
 require "conf.php";
-
+require "../html/navbar.php";
 $title = $_POST['title'];
 // $kenou =$_POST['kenou'];
 // $checkbox = $_POST['checkbox'];
@@ -16,7 +16,7 @@ $title = $_POST['title'];
 
 $sql="INSERT INTO lessons (title) VALUES('$title')";
   if (mysqli_query($con, $sql)) {
-    echo "New record created successfully";
+    echo "<h3>Η εισαγωγή έγινε με επιτυχία!</h3>";
   }else{
     echo "Error: " . $sql . "<br>" . mysqli_error($con);
   }

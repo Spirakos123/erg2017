@@ -21,22 +21,22 @@
          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Μαθήματα <span class="caret"></span></a>
            <ul class="dropdown-menu">
              <li><a href="../php/insert_lessons_html.php">Εισαγωγή μαθημάτων</a></li>
-             <li><a href="#">Ενημέρωση μαθημάτων</a></li>
-             <li><a href="#">Διαγραφή μαθημάτων</a></li>
+             <li><a href="../php/update_lessons_choose_lesson.php">Ενημέρωση μαθημάτων</a></li>
+             <li><a href="../php/delete_lessons_choose_lesson.php">Διαγραφή μαθημάτων</a></li>
            </ul>
          </li>
          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Ερωτήσεις Μαθημάτων<span class="caret"></span></a>
            <ul class="dropdown-menu">
-             <li><a href="#">Δημιουργία ερωτήσεων</a></li>
-             <li><a href="#">Ενημέρωση ερωτήσεων</a></li>
-             <li><a href="#">Διαγραφή ερωτήσεων</a></li>
+             <li><a href="../php/choose_lesson_for_questions.php">Δημιουργία ερωτήσεων</a></li>
+             <li><a href="../php/update_questions_choose_question.php">Ενημέρωση ερωτήσεων</a></li>
+             <li><a href="../php/delete_questions_choose_question.php">Διαγραφή ερωτήσεων</a></li>
            </ul>
          </li>
          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Χρήστες<span class="caret"></span></a>
            <ul class="dropdown-menu">
              <li><a href="../php/insert_user_admin_php.php">Δημιουργία χρηστών</a></li>
              <li><a href="../php/update_user_choose_user_html.php">Ενημέρωση χρηστών</a></li>
-             <li><a href="#">Διαγραφή χρηστών</a></li>
+             <li><a href="../php/delete_user_choose_user.php">Διαγραφή χρηστών</a></li>
            </ul>
          </li>
        </ul>
