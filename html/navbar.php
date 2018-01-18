@@ -39,6 +39,13 @@
              <li><a href="../php/delete_user_choose_user.php">Διαγραφή χρηστών</a></li>
            </ul>
          </li>
+         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Βαθμοί<span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <li><a href="../php/insert_grade_choose_user.php">Εισαγωγή βαθμών</a></li>
+             <li><a href="#">Ενημέρωση βαθμών</a></li>
+             <li><a href=".#">Διαγραφή βαθμών</a></li>
+           </ul>
+         </li>
        </ul>
        <ul class="nav navbar-nav navbar-right">
          <li><a href="../php/logout.php"><span class="glyphicon glyphicon-log-out"></span>Log_out</a></li>
