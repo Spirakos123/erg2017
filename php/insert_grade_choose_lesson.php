@@ -13,8 +13,7 @@
              <h3>Επιλέξτε χρήστη για να εισάγετε βαθμό</h3>
                 <?php
                   $user_id=$_POST['user'];
-                  $_SESSION['user']=$user_id;
-                  echo $user_id;
+                  
 
                   $con = mysqli_connect($local,$root,$pass,$idm);
                   if (!$con) {

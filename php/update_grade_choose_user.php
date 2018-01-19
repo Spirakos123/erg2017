@@ -9,7 +9,7 @@
     <body>
        <div class="container-fluid">
         <div class="col-xs-9 col-sm-9">
-             <h3>Επιλέξτε χρήστη για να εισάγετε βαθμό</h3>
+             <h3>Επιλέξτε χρήστη για να ενημερώσετε τον βαθμό</h3>
                 <?php
                   $con = mysqli_connect($local,$root,$pass,$idm);
                   if (!$con) {

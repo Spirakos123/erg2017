@@ -2,11 +2,9 @@
   <head>
   </head>
   <body>
-    <?php
-
-     require "../html/navbar.php" ?>
+    <?php require "../html/navbar.php" ?>
     <div class="container">
-      <h2>Εισαγωγή βαθμού</h2>
+      <h2>Ενημέρωση βαθμού</h2>
       <form class="form-horizontal" action="./insert_grade_base.php" method='post'>
         <div class="form-group">
           <label class="control-label col-sm-2" for="title">Βαθμός:</label>
