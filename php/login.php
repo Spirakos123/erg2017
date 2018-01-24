@@ -2,27 +2,43 @@
 
 require "conf.php";
 session_start();
-$user_name = $_POST['username'];
+$username = $_POST['username'];
 $password =$_POST['pwd'];
+$username=$_SESSION['username'];
+// $_SESSION['role'] = 'admin';
+$con = mysqli_connect($local,$root,$pass,$idm);
+ if (!$con) {
+ die('Could not connect: ' . mysql_error());
+ }
+mysqli_set_charset($con, "utf8");
+$sql = "SELECT role FROM users WHERE username='$username' ";
+$result = mysqli_query($con, $sql);
+if (mysqli_num_rows($result) > 0) {// Επιτυχία πιστοποίησης
+  while ($row = mysqli_fetch_array($result)) {
+    $_SESSION['role'] = $row['role'];
+  }
+//  $role=$row['role'];
+}else{
+  echo 'Den uparxei kati';
+ }
 
-if(($user_name=='vasso')&&($password=='555')){
-  $_SESSION['username'] = $user_name;
-  $_SESSION['role'] = "admin";
-  session_write_close();
-
-
+ if (!(empty($username) || empty($password))) {
+  if(($username=='vasso')&&($password=='555')){
+    // echo $_SESSION['role'];
+//   echo "wwwwwwwwwwwwwwwwwwww";
   header('Location: ../html/admin.php');
-
-}else if((isset($_SESSION['username']))) {
-  //require "../html/nav_user.html";
-  header('Location: ../html/navbar.html');
-  //elegxos gia ta stoixeia prwta
-  echo "<h2>Hello</h2>". $user_name;
+  }else {
+   header('Location: ../html/user.php');
+    //elegxos gia ta stoixeia prwta
+    echo "<h2>Hello</h2>". $username;
+  }
+  // else{
+  // //  echo "<h2>Hello</h2>". $user_name;
+  //   header('Location: ../html/register.php');
+  // }
+}else{
+  header('Location: ../html/login.php');
 }
-else  {
-  header('Location: ../html/register.html');
-}
-
 
   //mysqli_close($con);
 

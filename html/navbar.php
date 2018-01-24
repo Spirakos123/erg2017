@@ -8,8 +8,11 @@
   <body>
   	<?php
       session_start();
+      // echo "<pre>";
+      // print_r($_SESSION);
+      // echo "</pre>";
       if(isset($_SESSION['role'])){
-  		    if($_SESSION['role'] == "admin"){
+  		    if($_SESSION['role'] == 'admin'){
   	?>
   	<nav class="navbar navbar-inverse">
      <div class="container-fluid">
@@ -54,7 +57,8 @@
    </nav>
   	<?php
       //end of admin
-      }else{
+    }else{
+
     ?>
   	<nav class="navbar navbar-inverse">
 	    <div class="container-fluid">

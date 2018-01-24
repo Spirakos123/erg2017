@@ -13,7 +13,7 @@
 
 <div class="container">
   <h2>Register form</h2>
-  <form class="form-horizontal" action="insert_user.php" method='post'>
+  <form class="form-horizontal" action="../php/insert_user.php" method='post'>
     <div class="form-group">
       <label class="control-label col-sm-2" for="fname">First_Name:</label>
       <div class="col-sm-6">
