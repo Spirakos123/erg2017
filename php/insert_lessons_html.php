@@ -9,7 +9,13 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="title">Title:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="title" placeholder="Enter lesson" name="title">
+            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="title">Lesson:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="lesson" placeholder="Enter lesson" name="lesson" required>
           </div>
         </div>
         <div class="form-group">

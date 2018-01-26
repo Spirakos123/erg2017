@@ -2,7 +2,7 @@
 require "conf.php";
 require "../html/navbar.php";
 $title = $_POST['title'];
-// $kenou =$_POST['kenou'];
+$lesson =$_POST['lesson'];
 // $checkbox = $_POST['checkbox'];
 // $pollaplis =$_POST['pollaplis'];
 
@@ -14,7 +14,7 @@ $title = $_POST['title'];
   // $sql= "INSERT INTO users (firstname, lastname, email,username,password)
   // VALUES ('NULL', $firstname, $lastname,$email,$user_name,$password)";
 
-$sql="INSERT INTO lessons (title) VALUES('$title')";
+$sql="INSERT INTO lessons (title,lesson) VALUES('$title','$lesson')";
   if (mysqli_query($con, $sql)) {
     echo "<h3>Η εισαγωγή έγινε με επιτυχία!</h3>";
   }else{

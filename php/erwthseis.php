@@ -10,9 +10,9 @@
     <body>
        <div class="container-fluid">
         <div class="col-xs-9 col-sm-9">
-             <h3>Επιλέξτε μάθημα για να εισάγετε βαθμό</h3>
+             <h3>Επιλέξτε μάθημα για να εγγραφείτε</h3>
                 <?php
-                  $user_id=$_POST['user'];
+                  //$user_id=$_POST['user'];
 
 
                   $con = mysqli_connect($local,$root,$pass,$idm);
@@ -20,16 +20,17 @@
                       die("error: " . mysqli_connect_error());
                   }
                   mysqli_set_charset($con, "utf8");
-                  $sql = "SELECT * FROM lessons";
+                  $sql_question = "SELECT * FROM questions";
                   $result = mysqli_query($con, $sql);
 
                   if (mysqli_num_rows($result) > 0) {
                       // output data of each row
-                      echo "<form action='insert_grade_form.php' method='post'>";
+                      echo "<form action='#' method='post'>";
                       while ($row = mysqli_fetch_assoc($result)) {
-                          $lesson_id = $row["id"];
-                          $_SESSION['id']=$lesson_id;
-                          echo "<input type='radio' name='lesson' value=$lesson_id>";
+                          $question_id = $row["id"];
+                          $_SESSION['id']=$question_id;
+                        //  echo $lesson_id;
+                          echo "<input type='radio' name='question_id' value=$question_id>";
                           echo " Title:" . $row["title"];
 
                       }
