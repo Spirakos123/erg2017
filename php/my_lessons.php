@@ -10,7 +10,7 @@
     <body>
        <div class="container-fluid">
         <div class="col-xs-9 col-sm-9">
-             <h3>Επιλέξτε μάθημα για να εγγραφείτε</h3>
+             <h3>Τα μαθήματά μου</h3>
                 <?php
                   //$user_id=$_POST['user'];
 
@@ -20,26 +20,31 @@
                       die("error: " . mysqli_connect_error());
                   }
                   mysqli_set_charset($con, "utf8");
-                  $sql = "SELECT lessons.id,Lessons.title FROM lessons
-                          LEFT JOIN grades ON lessons.id=grades.lesson_id
-                          WHERE grades.user_id= ".$_SESSION['user_id'] ." IS NULL";
+                  $sql = "SELECT * FROM lessons
+                          INNER JOIN grades ON lessons.id = grades.lesson_id
+                          WHERE grades.user_id = ".$_SESSION['user_id']."";
                   $result = mysqli_query($con, $sql);
 
                   if (mysqli_num_rows($result) > 0) {
                       // output data of each row
-                      echo "<form action='insert_the_lesson.php' method='post'>";
-                      while ($row = mysqli_fetch_assoc($result)) {
+                      //echo "<form action='insert_the_lesson.php' method='post'>";
+                    ?>
+                    <ul>
+                      <?php
+                        while ($row = mysqli_fetch_assoc($result)) {
                           $lesson_id = $row["id"];
                           //$_SESSION['id']=$lesson_id;
-                          echo "<input type='checkbox' name='lesson_id[]' value=$lesson_id>";
-                          echo  " ".$row["title"]."</br>";
+                        //  echo "<input type='radio' name='lesson_id' value=$lesson_id>";
+                      ?>
+                        <li>
+                          <?php
+                              echo $row['title'];
+                            }
+                          ?>
+                        </li>
+                    </ul>
 
-                      }
-                     echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
-                              echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";
-
-
-                      echo "</form>";
+                  <?php
                   } else {
                       echo "Δεν βρέθηκε κανένα αποτέλεσμα";
                   }

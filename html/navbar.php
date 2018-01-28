@@ -66,12 +66,12 @@
 	        <a class="navbar-brand" href="#">Lessons</a>
 	      </div>
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="./home.php">Home</a></li>
+	        <li class="active"><a href="../html/user.php">Home</a></li>
 	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Μαθήματα <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="../php/egrafh_user_se_mathima.php">Εγγραφή σε μαθήματα</a></li>
 	            <li><a href="#">Διαγραφή από μαθήματα </a></li>
-	            <li><a href="#">Τα μαθήματά μου</a></li>
+	            <li><a href="../php/my_lessons.php">Τα μαθήματά μου</a></li>
 	          </ul>
 	        </li>
 	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Χρήστες<span class="caret"></span></a>

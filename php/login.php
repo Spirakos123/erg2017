@@ -14,12 +14,13 @@ $con = mysqli_connect($local,$root,$pass,$idm);
  die('Could not connect: ' . mysql_error());
  }
 mysqli_set_charset($con, "utf8");
-$sql = "SELECT role FROM users WHERE username='$username' ";
+$sql = "SELECT * FROM users WHERE username='$username' ";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {// Επιτυχία πιστοποίησης
   while ($row = mysqli_fetch_array($result)) {
     $_SESSION['role'] = $row['role'];
     $_SESSION['username'] = $row['username'];
+    $_SESSION['user_id'] = $row['id'];
   }
 //  $role=$row['role'];
 }else{
