@@ -2,7 +2,6 @@
     <head>
       <title></title>
       <?php
-
       	require "conf.php";
 	    require "../html/navbar.php";
       ?>
@@ -10,37 +9,32 @@
     <body>
        <div class="container-fluid">
         <div class="col-xs-9 col-sm-9">
-             <h3>Επιλέξτε μάθημα για να εγγραφείτε</h3>
+             <h3>Επιλέξτε μαθήματα για διαγραφή</h3>
                 <?php
-                  //$user_id=$_POST['user'];
-
-
                   $con = mysqli_connect($local,$root,$pass,$idm);
                   if (!$con) {
                       die("error: " . mysqli_connect_error());
                   }
                   mysqli_set_charset($con, "utf8");
-                  $sql_question = "SELECT * FROM questions";
+                  $sql = "SELECT lessons.id,Lessons.title FROM lessons
+                          LEFT JOIN grades ON lessons.id=grades.lesson_id
+                          WHERE grades.user_id= ".$_SESSION['user_id'];
                   $result = mysqli_query($con, $sql);
 
                   if (mysqli_num_rows($result) > 0) {
-                      // output data of each row
-                      echo "<form action='#' method='post'>";
+                      echo "<form action='diagrafh_apo_mathimata_base.php' method='post'>";
                       while ($row = mysqli_fetch_assoc($result)) {
-                          $question_id = $row["id"];
-                          $_SESSION['id']=$question_id;
+                          $lesson_id = $row["id"];
+                          $_SESSION['lesson_id']=$lesson_id;
                         //  echo $lesson_id;
-                          echo "<input type='radio' name='question_id' value=$question_id>";
-                          echo " Title:" . $row["title"];
-
+                          echo "<input type='checkbox' name='lessons[]' value=$lesson_id>";
+                          echo " Τίτλος μαθήματος:" . $row["title"]. "<br>";
                       }
                      echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
-                              echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";
-
-
-                      echo "</form>";
+                     echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";
+                     echo "</form>";
                   } else {
-                      echo "Δεν βρέθηκε κανένα αποτέλεσμα";
+                      echo "Δεν υπάρχουν μαθήματα";
                   }
 
                   mysqli_close($con);

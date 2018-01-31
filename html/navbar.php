@@ -70,8 +70,15 @@
 	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Μαθήματα <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="../php/egrafh_user_se_mathima.php">Εγγραφή σε μαθήματα</a></li>
-	            <li><a href="#">Διαγραφή από μαθήματα </a></li>
+	            <li><a href="../php/diagrafh_apo_mathimata_user.php">Διαγραφή από μαθήματα </a></li>
 	            <li><a href="../php/my_lessons.php">Τα μαθήματά μου</a></li>
+	          </ul>
+	        </li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Ερωτήσεις μαθημάτων <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="../php/epilogh_mathimatos_gia_erwthseis.php">Ερωτήσεις μαθημάτων</a></li>
+	            <li><a href="#">kkkkk </a></li>
+	            <li><a href="#">iiiiii</a></li>
 	          </ul>
 	        </li>
 	        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Χρήστες<span class="caret"></span></a>
