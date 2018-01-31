@@ -11,7 +11,7 @@
         <div class="col-xs-9 col-sm-9">
 
             <?php
-              $lesson_id=$_SESSION['id'];
+              $lesson_id=$_SESSION['lesson_id'];
               $erwthsh=$_POST['erwthsh'];
               $eidos_erwthshs=$_POST['eidos_erwthshs'];
               $con = mysqli_connect($local,$root,$pass,$idm);
@@ -32,6 +32,7 @@
                          echo "<h3>Δεν υπάρχουν εγγραφες</h3>";
                       }
                    echo "<h3>Η εισαγωγή έγινε με επιτυχία!</h3>";
+
                        $sql_have_question="INSERT INTO have_questions (lesson_id,question_id) VALUES('$lesson_id','$question_id')";
                        if (mysqli_query($con, $sql_have_question)) {
                          echo "<h3>Η εισαγωγή έγινε με επιτυχία!</h3>";

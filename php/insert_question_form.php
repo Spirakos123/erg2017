@@ -12,9 +12,10 @@
       <div class="container-fluid">
         <div class="col-xs-9 col-sm-9">
           <?php
-              $lesson_id=$_POST['id'];
+              $lesson_id=$_POST['lesson_id'];
+              $_SESSION['lesson_id'] = $lesson_id;
               echo $lesson_id;
-              
+
             ?>
             <form  action="insert_question.php" method="post">
               <h3>Εισάγετε την ερώτηση:</h3>

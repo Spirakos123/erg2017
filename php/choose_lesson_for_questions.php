@@ -23,7 +23,8 @@
                         echo "<form action='insert_question_form.php' method='post'>";
                         while ($row = mysqli_fetch_assoc($result)) {
                             $lesson_id = $row["id"];
-                            echo "<input type='radio' name='id' value=$lesson_id>";
+                            //$_SESSION['lesson_id'] = $lesson_id;
+                            echo "<input type='radio' name='lesson_id' value=$lesson_id>";
                             echo " Τίτλος μαθήματος:" . $row["title"]. "<br>";
                         }
                        echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
