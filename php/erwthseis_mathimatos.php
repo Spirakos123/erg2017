@@ -8,27 +8,7 @@
 
     </head>
     <body>
-      <?php
-        //tha mpei se allo arxeio
-        //pernoume to id tou question kai to kanoume save se enan array
-        if(isset($_POST['postF'])){
-          print_r($_POST);
-          $arr = array();
-          foreach ($_POST as $key => $value) {
-            echo $key."</br>";
-            $q = explode("_",$key);
-            if($key == "postF"){
-              continue;
-            }
-            $arr[] = $q[1];
-            print_r($q);
-          }
-          print_r($arr);
 
-          die("hi");
-        }
-
-       ?>
        <div class="container-fluid">
         <div class="col-xs-9 col-sm-9">
              <h3>erwthseis</h3>
@@ -37,7 +17,7 @@
                   $lesson_id=$_POST['lesson_id'];
                   $con = mysqli_connect($local,$root,$pass,$idm);
                   if (!$con) {
-                      die("error: " . mysqli_connect_error());
+                    //  die("error: " . mysqli_connect_error());
                   }
                   mysqli_set_charset($con, "utf8");
                   $sql_question = "SELECT questions.id,questions.title,questions.kind_question FROM questions
@@ -47,14 +27,14 @@
 
                   if (mysqli_num_rows($result) > 0) {
                       // output data of each row
-                      echo "<form action='erwthseis_mathimatos.php' method='post'>";
+                      echo "<form action='erwthseis_mathimatos_check.php' method='post'>";
                       while ($row = mysqli_fetch_assoc($result)) {
                           $question_id = $row["id"];
                           $kind_question = $row['kind_question'];
                           $_SESSION['id']=$question_id;
                           $_SESSION['kind_question']=$kind_question;
                           //  echo $lesson_id;
-                        if($kind_question=='Sosto/lathos'){
+                        if($kind_question=='σωστό λάθος'){
                           $name = "question_".$question_id;
                           echo "<span name='lesson_id' value=$question_id >";
                           echo " Title:" . $row["title"].' Σ/Λ ' ;
@@ -64,7 +44,7 @@
                         }
 
                       }
-                      echo "<input type='button' onclick='myFunction()' value='Send order'>"."<br>";
+                    //  echo "<input type='button' onclick='myFunction()' value='Send order'>"."<br>";
                       echo "<input type='text' id='order' size='50'>";
                      echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
                     //echo "<button class='btn btn-default' type='submit' >Υποβολή</button>";
@@ -80,18 +60,5 @@
                   ?>
             </div>
         </div>
-        <script>
-        function myFunction() {
-          var coffee = document.forms[0];
-          var txt = "";
-          var i;
-          for (i = 0; i < coffee.length; i++) {
-              if (coffee[i].checked) {
-                  txt = txt + coffee[i].value + " ";
-              }
-          }
-          document.getElementById("order").value = "You ordered a coffee with: " + txt;
-      }
-       </script>
     </body>
 </html>
