@@ -23,8 +23,9 @@
                         echo "<form action='update_lessons_change_values.php' method='post'>";
                         while ($row = mysqli_fetch_assoc($result)) {
                             $lesson_id = $row["id"];
+                            echo '<label class="checkbox" style="cursor:pointer;">';
                             echo "<input type='radio' name='id' value=$lesson_id>";
-                            echo " Τίτλος μαθήματος:" . $row["title"]. "<br>";
+                            echo $row["title"]."</label>";
                         }
                        echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
                        echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";

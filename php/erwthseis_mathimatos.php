@@ -15,6 +15,7 @@
 
               <?php
                   $lesson_id=$_POST['lesson_id'];
+                  $_SESSION['lesson_id']=$lesson_id;
                   $con = mysqli_connect($local,$root,$pass,$idm);
                   if (!$con) {
                     //  die("error: " . mysqli_connect_error());
@@ -31,10 +32,10 @@
                       while ($row = mysqli_fetch_assoc($result)) {
                           $question_id = $row["id"];
                           $kind_question = $row['kind_question'];
-                          $_SESSION['id']=$question_id;
+                          $_SESSION['question_id']=$question_id;
                           $_SESSION['kind_question']=$kind_question;
                           //  echo $lesson_id;
-                        if($kind_question=='σωστό λάθος'){
+                        if($kind_question=='Sosto/lathos'){
                           $name = "question_".$question_id;
                           echo "<span name='lesson_id' value=$question_id >";
                           echo " Title:" . $row["title"].' Σ/Λ ' ;
@@ -45,7 +46,7 @@
 
                       }
                     //  echo "<input type='button' onclick='myFunction()' value='Send order'>"."<br>";
-                      echo "<input type='text' id='order' size='50'>";
+                    
                      echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
                     //echo "<button class='btn btn-default' type='submit' >Υποβολή</button>";
                     echo "<input type='submit' name='postF' value='Υποβολή'><br>";

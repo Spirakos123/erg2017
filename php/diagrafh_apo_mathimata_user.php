@@ -25,10 +25,10 @@
                       echo "<form action='diagrafh_apo_mathimata_base.php' method='post'>";
                       while ($row = mysqli_fetch_assoc($result)) {
                           $lesson_id = $row["id"];
-                          $_SESSION['lesson_id']=$lesson_id;
                         //  echo $lesson_id;
+                          echo '<label class="checkbox" style="margin-left: 40px;cursor:pointer;">';
                           echo "<input type='checkbox' name='lessons[]' value=$lesson_id>";
-                          echo " Τίτλος μαθήματος:" . $row["title"]. "<br>";
+                          echo $row["title"]."</label>";
                       }
                      echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
                      echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";

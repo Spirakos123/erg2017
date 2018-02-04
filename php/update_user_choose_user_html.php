@@ -26,7 +26,7 @@
                         while ($row = mysqli_fetch_assoc($result)) {
                             $user_id = $row["id"];
                             if($cnt==0){
-                                $input_string="<input type='radio' name='user' value=$user_id checked>";
+                                $input_string="<input type='radio' name='user' value=$user_id>";
                             }else{
                                 $input_string="<input type='radio' name='user' value=$user_id>";
                             }

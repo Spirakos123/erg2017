@@ -29,14 +29,14 @@
                       // output data of each row
                       //echo "<form action='insert_the_lesson.php' method='post'>";
                     ?>
-                    <ul>
+                    <ul class="list-group">
                       <?php
                         while ($row = mysqli_fetch_assoc($result)) {
                           $lesson_id = $row["id"];
                           //$_SESSION['id']=$lesson_id;
                         //  echo "<input type='radio' name='lesson_id' value=$lesson_id>";
                       ?>
-                        <li>
+                        <li class="list-group-item list-group-item-info">
                           <?php
                               echo $row['title'];
                             }

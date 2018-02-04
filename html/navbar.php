@@ -103,8 +103,7 @@
           <a class="navbar-brand" href="#">Lessons</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="./home.php">Home</a></li>
-          <li><a href="#">top χρήστες</a></li>
+          <li class="active"><a href="./home.php">Home</a></li>        
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="./register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
