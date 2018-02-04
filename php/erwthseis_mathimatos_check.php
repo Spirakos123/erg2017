@@ -52,7 +52,7 @@ require "../html/navbar.php";
                  echo "answer = ".$answer."</br>";
                }
            }else{
-             echo "No results!";
+             echo "No correct anwser found!";
            }
 
          }else{

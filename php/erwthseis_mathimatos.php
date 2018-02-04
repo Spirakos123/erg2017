@@ -35,18 +35,40 @@
                           $_SESSION['question_id']=$question_id;
                           $_SESSION['kind_question']=$kind_question;
                           //  echo $lesson_id;
-                        if($kind_question=='Sosto/lathos'){
                           $name = "question_".$question_id;
+                        if($kind_question=='Sosto/lathos'){
                           echo "<span name='lesson_id' value=$question_id >";
                           echo " Title:" . $row["title"].' Σ/Λ ' ;
                           echo "<input type='radio' value='Σ' name='$name' >";
                           echo "<input type='radio' value='Λ' name='$name' >"."</br>";
                           echo "</span>";
+                        }elseif ($kind_question=='pollaplis') {
+                          $sql_question = "SELECT answer FROM questions WHERE id = '$question_id' ";
+                          $result = mysqli_query($con, $sql_question);
+                          if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $answer = $row['answer'];
+                                echo "answer = ".$answer."</br>";
+                              }
+                          }else{
+                            echo "No correct anwser found!";
+                          }
+                          $first = rand(7,15);
+                          $second = rand(8,16);
+                          //echo '<label class="radio" style="cursor:pointer;">';
+                          if($first == $second){
+                            $first = rand(7,15);
+                            $second = rand(8,16);
+                          }
+                          echo $row["title"]."</br>";
+                          echo "<input type='radio' value='$first' name='$name' >".$first."</br>";
+                          echo "<input type='radio' value='$second' name='$name' >".$second."</br>";
+                          echo "<input type='radio' value='$answer' name='$name' >".$answer."</br>";
                         }
 
                       }
                     //  echo "<input type='button' onclick='myFunction()' value='Send order'>"."<br>";
-                    
+
                      echo "<br>" . " <button class='btn btn-default' type='reset'>Επαναφορά</button>";
                     //echo "<button class='btn btn-default' type='submit' >Υποβολή</button>";
                     echo "<input type='submit' name='postF' value='Υποβολή'><br>";
