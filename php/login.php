@@ -21,29 +21,23 @@ if (mysqli_num_rows($result) > 0) {// Επιτυχία πιστοποίησης
     $_SESSION['role'] = $row['role'];
     $_SESSION['username'] = $row['username'];
     $_SESSION['user_id'] = $row['id'];
+    $pass = $row['password'];
   }
-//  $role=$row['role'];
+  if (!(empty($username) || empty($password))) {
+    if(($username=='vasso')&&($password=='555')){
+    header('Location: ../html/admin.php');
+    }else{
+      header('Location: ../html/user.php');
+    }
+  }else{
+   header('Location: ../html/login.php');
+  }
+
 }else{
   echo 'Den uparxei kati';
  }
 
- if (!(empty($username) || empty($password))) {
-  if(($username=='vasso')&&($password=='555')){
-    // echo $_SESSION['role'];
-//   echo "wwwwwwwwwwwwwwwwwwww";
-  header('Location: ../html/admin.php');
-  }else{
-   header('Location: ../html/user.php');
-    //elegxos gia ta stoixeia prwta
-  //  echo "<h2>Hello</h2>". $username;
-  }
-  // else{
-  // //  echo "<h2>Hello</h2>". $user_name;
-  //   header('Location: ../html/register.php');
-  // }
-}else{
- header('Location: ../html/login.php');
-}
+
 
   mysqli_close($con);
 

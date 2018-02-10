@@ -11,6 +11,10 @@
         <div class="container-fluid">
             <div id="content" class="col-xs-9 col-sm-9">
                 <?php
+                    echo "<pre>";
+                    print_r($_POST['user']);
+                    echo "</pre>";
+
                     if (!isset($_POST['user'])) {
                       echo "<div class='alert alert-warning'>
                         <strong>Προσοχή!</strong> Δεν έχετε επιλέξει κανένα στοιχείο.
@@ -31,11 +35,13 @@
 
                           // sql to delete a record
                           $sql = "DELETE FROM users WHERE id='$trim_value' ";
-
+                          //die($sql);
                           if (mysqli_query($con, $sql)) {
+                            echo "true";
                               $flag = TRUE;
                           } else {
                               $err = mysqli_error($con);
+                              echo $err;
 
                           }
                           mysqli_close($con);

@@ -46,8 +46,8 @@
                           $sql_question = "SELECT answer FROM questions WHERE id = '$question_id' ";
                           $result = mysqli_query($con, $sql_question);
                           if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $answer = $row['answer'];
+                            while ($row_answer = mysqli_fetch_assoc($result)) {
+                                $answer = $row_answer['answer'];
                                 echo "answer = ".$answer."</br>";
                               }
                           }else{
@@ -60,7 +60,7 @@
                             $first = rand(7,15);
                             $second = rand(8,16);
                           }
-                          echo $row["title"]."</br>";
+                          echo $row['title']."</br>";
                           echo "<input type='radio' value='$first' name='$name' >".$first."</br>";
                           echo "<input type='radio' value='$second' name='$name' >".$second."</br>";
                           echo "<input type='radio' value='$answer' name='$name' >".$answer."</br>";

@@ -34,17 +34,30 @@
                         //  echo $lesson_id;
                           echo "<input type='radio' name='lesson_id' value=$lesson_id>";
                           echo $row["title"];
-                          $sql = "SELECT lesson_id,COUNT(question_id) countQuestions FROM have_questions GROUP BY lesson_id";
+                          $sql = "SELECT lesson_id,COUNT(question_id) countQuestions
+                                  FROM have_questions
+                                  WHERE lesson_id IN(SELECT
+                                      lessons.id
+                                  FROM
+                                      lessons
+                                          INNER JOIN
+                                      grades ON lessons.id = grades.lesson_id
+                                  WHERE
+                                      grades.user_id = '$user_id'
+                                          AND grades.examined = 0)
+                                  GROUP BY lesson_id";
                           $result2 = mysqli_query($con, $sql);
                           if (mysqli_num_rows($result2) > 0) {
                             while ($row2 = mysqli_fetch_assoc($result2)) {
-                              if($row['id'] == $row2['lesson_id']){
-                                echo " (".$row2['countQuestions'].")";
+                              if($lesson_id == $row2['lesson_id']){
+                                echo ' <span class="badge" style="background-color: #3a87ad;">'.$row2['countQuestions'].'</span>';
                               }else{
                                 continue;
                               }
                             }
                             echo "</br>";
+                          }else{
+                            echo ' <span class="text-danger">( Δέν μπορείς να εξεταστείς στο μάθημα αυτό ακόμα )</span></br>';
                           }
 
                       }
