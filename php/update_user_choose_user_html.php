@@ -70,16 +70,30 @@
 <script type="text/javascript">
 $(document).ready(function(){
     var ids = [];
+    var id = 0;
     $(".edit").click(function(){
       $(this)["0"].parentElement.parentElement.style.backgroundColor = "#f0ad4e";
+
+      id = $(this)[0]['parentElement']['parentElement']['children'][1]['innerText'];
+      var x = ids.indexOf(id);
+      if(x == -1){
+        ids.push(id);
+        $('#ids').val(ids);
+      }else{
+        //console.log("uparxei idi");
+      }
       //console.log($(this)["0"].parentElement.parentElement.style.backgroundColor);
     });
     $(".changes").focusin(function(){
       $(this).css("background-color","#f0ad4e");
-      ids.push($(this)[0]['firstElementChild']['innerText']);
-      // console.log($(this)[0]['firstElementChild']['innerText']);
-      // console.log(ids);
-      $('#ids').val(ids);
+      id = $(this)[0]['children'][1]['innerText'];
+      var x = ids.indexOf(id);
+      if(x == -1){
+        ids.push(id);
+        $('#ids').val(ids);
+      }else{
+        //console.log("uparxei idi");
+      }
     });
 
 });
