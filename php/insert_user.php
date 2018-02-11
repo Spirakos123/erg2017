@@ -29,7 +29,7 @@ $c_pass =$_POST['cpwd'];
      mysqli_set_charset($con, "utf8");
 
 
-     $sql= "INSERT INTO users(firstname, lastname, email, username, password,role) VALUES ('$firstname', '$lastname','$email','$user_name','$password','user')";
+     $sql= "INSERT INTO users (firstname, lastname, email, username, password,role) VALUES ('$firstname', '$lastname','$email','$user_name','$password','user')";
      if (mysqli_query($con, $sql)) {
        $last_id = mysqli_insert_id($con);
        $_SESSION['username']=$user_name;

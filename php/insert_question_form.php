@@ -19,9 +19,9 @@
             ?>
             <form  action="insert_question.php" method="post">
               <h3>Εισάγετε την ερώτηση:</h3>
-              <input class='form-control' type='text' name='erwthsh'></input>
+              <input class='form-control' type='text' name='erwthsh'required></input>
               <h3>Εισάγετε το είδος ερώτησης:</h3>
-              <input class='form-control' type='text' name='eidos_erwthshs'></input><br>
+              <input class='form-control' type='text' name='eidos_erwthshs'required></input><br>
               <button class='btn btn-default' type='submit'>Υποβολή</button>
             </form>
           </div>

@@ -23,23 +23,51 @@
                         // output data of each row
                         $cnt=0;
                         echo "<form action='update_user_change_values_html.php' method='post'>";
+                        ?>
+                        <button class="btn btn-default" style="margin-bottom:10px;" name="save">Save changes</button>
+                        <table class="table table-hover table-condensed table-responsive">
+                          <thead>
+                            <th class="text-center">id</th>
+                            <th class="text-center">firstname</th>
+                            <th class="text-center">lastname</th>
+                            <th class="text-center">email</th>
+                            <th class="text-center">username</th>
+                            <th class="text-center">password</th>
+                          </thead>
+                          <tbody>
+                      <?php
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $user_id = $row["id"];
-                            if($cnt==0){
-                                $input_string="<input type='radio' name='user' value=$user_id>";
-                            }else{
-                                $input_string="<input type='radio' name='user' value=$user_id>";
-                            }
-                            echo $input_string;
-                            echo " Username: " . $row["username"];
-                            echo " Firstname: " . $row["firstname"];
-                            echo " Lastname: " . $row["lastname"] . "<br>";
-                            $cnt++;
+                            // $user_id = $row["id"];
+                            // if($cnt==0){
+                            //     $input_string="<input type='radio' name='user' value=$user_id>";
+                            // }else{
+                            //     $input_string="<input type='radio' name='user' value=$user_id>";
+                            // }
+                            // echo $input_string;
+                            // echo " Username: " . $row["username"];
+                            // echo " Firstname: " . $row["firstname"];
+                            // echo " Lastname: " . $row["lastname"] . "<br>";
+                            // $cnt++;
+                            ?>
+
+                            <tr class="changes">
+                              <td><input class="form-control" type="hidden" name="values[<?php echo $row['id']; ?>][id]" value="<?php echo $row['id']; ?>"><?php echo $row['id']; ?></td>
+                              <td><input class="form-control" type="text" name="values[<?php echo $row['id']; ?>][firstname]" value="<?php echo $row['firstname']; ?>"></td>
+                              <td><input class="form-control" type="text" name="values[<?php echo $row['id']; ?>][lastname]" value="<?php echo $row['lastname']; ?>"></td>
+                              <td><input class="form-control" type="text" name="values[<?php echo $row['id']; ?>][email]" value="<?php echo $row['email']; ?>"></td>
+                              <td><input class="form-control" type="text" name="values[<?php echo $row['id']; ?>][username]" value="<?php echo $row['username']; ?>"></td>
+                              <td><input class="form-control" type="text" name="values[<?php echo $row['id']; ?>][password]" value="<?php echo $row['password']; ?>"></td>
+                            </tr>
+                            <?php
                         }
-                        echo "<br>" . " <button class='btn btn-default' type='reset'>Καθαρισμός</button>";
-                        echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";
+                        // echo "<br>" . " <button class='btn btn-default' type='reset'>Καθαρισμός</button>";
+                        // echo "<button class='btn btn-default' type='submit'>Υποβολή</button>";
 
-
+                        ?>
+                      </tbody>
+                    </table>
+                    <input type="hidden" name="ids" id="ids">
+                        <?php
                         echo "</form>";
                     } else {
                         echo "Δεν βρέθηκαν αποτελέσματα";
@@ -51,3 +79,18 @@
             </div>
     </div>
 </html>
+<script type="text/javascript">
+$(document).ready(function(){
+    var ids = [];
+    $(".changes").focusin(function(){
+      $(this).css("background-color","#f0ad4e");
+      ids.push($(this)[0]['firstElementChild']['innerText']);
+      // console.log($(this)[0]['firstElementChild']['innerText']);
+      // console.log(ids);
+      $('#ids').val(ids);
+    });
+
+});
+
+
+</script>

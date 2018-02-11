@@ -9,6 +9,7 @@
       ?>
         <div class="container-fluid">
             <?php
+            
               $user_id = $_POST["user_id"];
               $new_user_first_name = $_POST["new_firstname"];
               $new_user_last_name = $_POST["new_lastname"];
@@ -23,11 +24,10 @@
               if (!$con) {
                   die("Αποτυχία σύνδεσης: " . mysqli_connect_error());
               }
-              password_hash($new_user_password,PASSWORD_DEFAULT);
-
+              $hash = password_hash($new_user_password,PASSWORD_DEFAULT);
               $sql = "UPDATE users SET firstname = '$new_user_first_name',
               lastname='$new_user_last_name', email='$new_user_email',
-               username='$new_user_name', password='$new_user_password'
+               username='$new_user_name', password='$hash'
                WHERE id = '$user_id';";
 
               mysqli_set_charset($con, "utf8");

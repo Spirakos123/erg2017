@@ -23,7 +23,48 @@
                 <h3> Ενημερώστε τις τιμές </h3>
 
                 <?php
+                $con = mysqli_connect($local,$root,$pass,$idm);
+                echo "<pre>";
+                print_r($_POST);
+                echo "</pre>";
+                $ids = $_POST['ids'];
+                $sql = "SELECT * FROM `users`WHERE id IN($ids)"; //τραβαμε ολα τα στοιχεια του αεροδρομιου
+    //		για να δωσουμε προηγουμενες τιμες σε ολα οσα δεν θελουμε να αλλαξουμε
+                $result = mysqli_query($con, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    $user_id = $row['id'];
+                    foreach($_POST['values'] as $key => $value ){
+                      if($key==$row['id']){
+                        //print_r($value);
+                             $firstname = $value['firstname'];
+                             $lastname = $value['lastname'];
+                             $email = $value['email'];
+                             $username = $value['username'];
+                             $hash = password_hash($value['password'],PASSWORD_DEFAULT);
+                             $sql = "UPDATE users SET firstname = '$firstname',
+                             lastname='$lastname', email='$email',
+                             username='$username', password='$hash'
+                             WHERE id = '$user_id'";
+                             echo $sql;
 
+                          mysqli_set_charset($con, "utf8");
+                          if (mysqli_query($con, $sql)) {
+                              echo "<h3>Η ενημέρωση έγινε με επιτυχία</h3>" . "<br>";
+                              echo "<p> <a class='btn btn-default' href='#' role='button'>Πίσω στην αρχική</a>";
+
+                          } else {
+                              echo "<h3>Σφάλμα ενημέρωσης:</h3> <h5>" . mysqli_error($con) . "</h5>";
+                          }
+                      }else{
+                        continue;
+                      }
+
+                    }
+                  }
+
+                }
+                die;
                 $user_id = $_POST['user'];
 
                  $con = mysqli_connect($local,$root,$pass,$idm);
@@ -45,30 +86,35 @@
                         $previous_user_email = $row['email'];
                         $previous_user_name = $row['username'];
                         $previous_user_password = $row['password'];
+                        ?>
+
+
+
+                        <?php
                         echo "<input type='hidden' name='user_id' value='$user_id'>";
                         echo "<div class='form-group' >";
                         echo "<label for='new_shop_name'>Νέο όνομα χρηστη:</label>";
-                        echo "<input class='form-control' id='new_firstname' type='text' name='new_firstname' value='$previous_user_first_name'>"/* . "<br>"*/;
+                        echo "<input class='form-control' id='new_firstname' type='text' name='new_firstname' value='$previous_user_first_name' required>"/* . "<br>"*/;
                         echo "</div>";
 
                         echo "<div class='form-group'>";
                         echo "<label for='new_user_last_name'>Νέο επώνυμο χρήστη:</label>";
-                        echo "<input class='form-control' id='new_lastname' type='text' name ='new_lastname' value='$previous_user_last_name'>" /*. "<br>"*/;
+                        echo "<input class='form-control' id='new_lastname' type='text' name ='new_lastname' value='$previous_user_last_name' required>" /*. "<br>"*/;
                         echo "</div>";
 
                         echo "<div class='form-group'>";
                         echo "<label for='new_user_email'>Νέο email χρήστη:</label>";
-                        echo "<input class='form-control' id='new_email' type='email' name='new_email' value='$previous_user_email'>" /*. "<br>"*/;
+                        echo "<input class='form-control' id='new_email' type='email' name='new_email' value='$previous_user_email'required>" /*. "<br>"*/;
                         echo "</div>";
 
                         echo "<div class='form-group'>";
                         echo "<label for='new_user_name'>Νέο ονομα χρήστη:</label>";
-                        echo "<input class='form-control' id='new_username' type='text' name='new_username' value='$previous_user_name'>"/* . "<br>"*/;
+                        echo "<input class='form-control' id='new_username' type='text' name='new_username' value='$previous_user_name'required>"/* . "<br>"*/;
                         echo "</div>";
 
                         echo "<div class='form-group'>";
                         echo "<label for='new_password'>Νέο συνθηματικό χρηστη:</label>";
-                        echo "<input class='form-control' id='new_password' type='text' name='new_password' value='$previous_user_password'>"/* . "<br>"*/;
+                        echo "<input class='form-control' id='new_password' type='text' name='new_password' pattern='.{4,8}' title='Ο κωδικός πρέπει να είναι από 4-8 χαρακτήρες'  value='$previous_user_password'required>"/* . "<br>"*/;
                         echo "</div>";
 
                         echo " <a class='btn btn-default' href='update_user_choose_user_html.php' role='button'>Πίσω</a>";

@@ -11,7 +11,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="title">Βαθμός:</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" id="grade" placeholder="Enter grade" name="grade">
+            <input type="text" class="form-control" id="grade" placeholder="Enter grade" name="grade"required>
           </div>
         </div>
         <div class="form-group">

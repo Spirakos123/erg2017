@@ -1,5 +1,4 @@
 <?php
-
 require "conf.php";
 session_start();
 //$username=$_SESSION['username'];
@@ -21,9 +20,10 @@ if (!(empty($username) || empty($password))) {
      $_SESSION['role'] = $row['role'];
      $_SESSION['username'] = $row['username'];
      $_SESSION['user_id'] = $row['id'];
-     $pass = $row['password'];
+     $dbpass = $row['password'];
    }
-     $decodePass = password_verify($password, $pass);
+    
+     $decodePass = password_verify($password, $dbpass);
      if ($decodePass) {
          echo 'Password is valid!';
          if($row['role'] == 'admin'){

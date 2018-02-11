@@ -21,7 +21,7 @@
                     die("Αποτυχια σύνδεσης: " . mysqli_connect_error());
                 }
                 mysqli_set_charset($con, "utf8");
-              
+
                 $sql = "SELECT * FROM questions WHERE id='$question_id'";
                 $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result) > 0) {
@@ -34,11 +34,11 @@
                         echo "<input type='hidden' name='id' value='$question_id'>";
                         echo "<div class='form-group' >";
                         echo "<label>Νέος τίτλος ερώτηαης:</label>";
-                        echo "<input class='form-control' id='new_title' type='text' name='new_title' value='$previous_title'>". "<br>";
+                        echo "<input class='form-control' id='new_title' type='text' name='new_title' value='$previous_title'required>". "<br>";
                         echo "</div>";
                         echo "<div class='form-group' >";
                         echo "<label>Νέο είδος ερώτησης:</label>";
-                        echo "<input class='form-control' id='new_kind_question' type='text' name='new_kind_question' value='$previous_kind_question'>". "<br>";
+                        echo "<input class='form-control' id='new_kind_question' type='text' name='new_kind_question' value='$previous_kind_question' required>". "<br>";
                         echo "</div>";
 
                         echo "<button class='btn btn-default'type='reset'>επαναφορά</button> <button class='btn btn-default'type='submit'>υποβολή</button>";
