@@ -9,20 +9,21 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <?php require './navbar.php'; ?>
 
 <div class="container">
-  <h2>Horizontal form</h2>
-  <form class="form-horizontal" action="login.php" method='post'>
+  <h2>Login form</h2>
+  <form class="form-horizontal" action="../php/login.php" method='post'>
     <div class="form-group">
       <label class="control-label col-sm-2" for="username">username:</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Password:</label>
       <div class="col-sm-6">
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
       </div>
     </div>
     <div class="form-group">
