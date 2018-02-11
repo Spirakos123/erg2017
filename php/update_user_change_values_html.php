@@ -23,7 +23,7 @@
                 <h3> Ενημερώστε τις τιμές </h3>
 
                 <?php
-                $con = mysqli_connect($local,$root,$pass,$idm);
+                $con = mysqli_connect($local, $root, $pass, $idm);
                 echo "<pre>";
                 print_r($_POST);
                 echo "</pre>";
@@ -32,42 +32,39 @@
     //		για να δωσουμε προηγουμενες τιμες σε ολα οσα δεν θελουμε να αλλαξουμε
                 $result = mysqli_query($con, $sql);
                 if (mysqli_num_rows($result) > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    $user_id = $row['id'];
-                    foreach($_POST['values'] as $key => $value ){
-                      if($key==$row['id']){
-                        //print_r($value);
-                             $firstname = $value['firstname'];
-                             $lastname = $value['lastname'];
-                             $email = $value['email'];
-                             $username = $value['username'];
-                             $hash = password_hash($value['password'],PASSWORD_DEFAULT);
-                             $sql = "UPDATE users SET firstname = '$firstname',
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $user_id = $row['id'];
+                        foreach ($_POST['values'] as $key => $value) {
+                            if ($key==$row['id']) {
+                                //print_r($value);
+                                $firstname = $value['firstname'];
+                                $lastname = $value['lastname'];
+                                $email = $value['email'];
+                                $username = $value['username'];
+                                $hash = password_hash($value['password'], PASSWORD_DEFAULT);
+                                $sql = "UPDATE users SET firstname = '$firstname',
                              lastname='$lastname', email='$email',
                              username='$username', password='$hash'
                              WHERE id = '$user_id'";
-                             echo $sql;
+                                echo $sql;
 
-                          mysqli_set_charset($con, "utf8");
-                          if (mysqli_query($con, $sql)) {
-                              echo "<h3>Η ενημέρωση έγινε με επιτυχία</h3>" . "<br>";
-                              echo "<p> <a class='btn btn-default' href='#' role='button'>Πίσω στην αρχική</a>";
-
-                          } else {
-                              echo "<h3>Σφάλμα ενημέρωσης:</h3> <h5>" . mysqli_error($con) . "</h5>";
-                          }
-                      }else{
-                        continue;
-                      }
-
+                                mysqli_set_charset($con, "utf8");
+                                if (mysqli_query($con, $sql)) {
+                                    echo "<h3>Η ενημέρωση έγινε με επιτυχία</h3>" . "<br>";
+                                    echo "<p> <a class='btn btn-default' href='#' role='button'>Πίσω στην αρχική</a>";
+                                } else {
+                                    echo "<h3>Σφάλμα ενημέρωσης:</h3> <h5>" . mysqli_error($con) . "</h5>";
+                                }
+                            } else {
+                                continue;
+                            }
+                        }
                     }
-                  }
-
                 }
                 die;
                 $user_id = $_POST['user'];
 
-                 $con = mysqli_connect($local,$root,$pass,$idm);
+                 $con = mysqli_connect($local, $root, $pass, $idm);
 
                 if (!$con) {
                     die("Αποτυχια σύνδεσης: " . mysqli_connect_error());
@@ -85,8 +82,7 @@
                         $previous_user_last_name = $row["lastname"];
                         $previous_user_email = $row['email'];
                         $previous_user_name = $row['username'];
-                        $previous_user_password = $row['password'];
-                        ?>
+                        $previous_user_password = $row['password']; ?>
 
 
 
@@ -119,7 +115,6 @@
 
                         echo " <a class='btn btn-default' href='update_user_choose_user_html.php' role='button'>Πίσω</a>";
                         echo "<button class='btn btn-default'  type='reset'>επαναφορά</button> <button class='btn btn-default'  type='submit'>υποβολή</button>";
-
                     }
                     echo "</form>";
                 } else {
