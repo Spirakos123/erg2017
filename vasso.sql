@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2018 at 09:43 PM
+-- Generation Time: Feb 11, 2018 at 09:23 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -45,13 +45,16 @@ INSERT INTO `grades` (`id`, `lesson_id`, `user_id`, `grade`, `examined`) VALUES
 (2, 3, 2, 10, 1),
 (3, 5, 2, 0, 0),
 (4, 6, 2, 0, 0),
-(6, 5, 3, 0, 0),
 (10, 1, 4, 8, 1),
 (11, 3, 4, 6, 1),
 (12, 1, 5, 7, 1),
 (13, 3, 5, 7, 1),
 (14, 2, 2, 10, 1),
-(15, 2, 4, 7, 1);
+(15, 2, 4, 7, 1),
+(16, 2, 5, 3, 1),
+(17, 1, 14, 0, 0),
+(18, 2, 14, 0, 0),
+(19, 3, 14, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -141,7 +144,7 @@ CREATE TABLE `users` (
   `lastname` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `email` text COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `role` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -150,12 +153,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `username`, `password`, `role`) VALUES
-(1, 'vasso', 'δδδ', 'vasso.fitrou@gmail.com', 'vasso', '555', 'admin'),
-(2, 'tzina', '22', 'vasso.fitrou@gmail.com', 'tzina', '789', 'user'),
-(3, '22222222222', '22', 'vasso.fitrou@gmail.com', 'rex', '111', 'user'),
-(4, 'spiros', 'malakas', 'test@mail.com', 'paparas', '123', 'user'),
+(1, 'vasso', 'δδδ', 'vasso.fitrou@gmail.com', 'vasso', '$2y$10$y9IVeybFcCKR8Kt.G23KduVlMadUlsIDhE/1YDPI3V8PLJEmyG7SO', 'admin'),
+(2, 'tzina', '22', 'vasso.fitrou@gmail.com', 'tzina', '$2y$10$ObmfOG9U5MwQ/N1REt8iIus1U0n7/meAls0PXJoOVA4sZcfhKmpkG', 'user'),
+(4, 'spiros', 'malakas123', 'test@mail.com', 'paparas', '$2y$10$6P27zj59DLCTdGgL5wkOi.NLwCWV8zgZstivGtOdemi72ROZ.kACC', 'user'),
 (5, 'spiros2', 'malakas2', 'test2@mail.com', 'paparas2', '123', 'user'),
-(6, 'argyris2', 'touvlo', 'arg@mail.com', 'mpeto', '$2y$10$DWCTAJPYjdiP6SjKXnhL2eaYMGlJBypvbsdKv6ZF4dt', 'user');
+(6, 'argyris2', 'touvlo', 'arg@mail.com', 'mpeto', '123', 'user'),
+(7, 'kwstas', 'pagkozidis', 'kpagk@gmail.com', 'lala', '123', 'user'),
+(8, 'gsdr', 'fgs', 'fsfdfsf@gmail.com', 'sfsfsfsf', '123', 'user'),
+(9, 'fxdrghdf', 'ghffgfg', 'ghghhg@gmail.com', 'spirakos', '123', 'user'),
+(10, 'gvhfg', 'fghfgh', 'xdfjkm@gmail.com', 'mike', '123', 'user'),
+(11, 's', 's', 'test@mail.com', 'pipis', '123', 'user'),
+(13, 'ss', 'ss', 'test2@mail.com', 'pipis2', '$2y$10$OKTnIqxth.2JCdY5S1qoZuupuqetkeoVHP11nGcQa3N', 'user'),
+(14, 'ss', 'ss', 'test3@mail.com', 'pipis3', '123', 'user'),
+(15, 'kwstas', 'malaka2222', 'test@mail.com', 'kp', '$2y$10$OEpDUw1.uaZEscLbQMlE.ev9iahkBZkogbZ6cJ4oHRhTpaZfs5Rcm', 'user'),
+(16, 'kwstas', 'malakas2', 'test@mail.com', 'kp2', '123', 'user'),
+(17, 'lalala', 'fdavjyhvbjh', 'rerte@mail.com', 'test', '$2y$10$idWhBApfu2oJVaH8qZPFNunBeg71twCAe3qp2cmyrnuPzWdCaF6sO', 'user');
 
 --
 -- Indexes for dumped tables
@@ -202,7 +214,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `lessons`
@@ -220,7 +232,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -230,8 +242,8 @@ ALTER TABLE `users`
 -- Constraints for table `grades`
 --
 ALTER TABLE `grades`
-  ADD CONSTRAINT `grades_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `grades_ibfk_2` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`);
+  ADD CONSTRAINT `lessonId` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `userId` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `have_questions`
